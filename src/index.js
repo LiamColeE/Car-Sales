@@ -5,9 +5,9 @@ import { Provider } from 'react-redux';
 import 'bulma/css/bulma.css';
 import './styles.scss';
 import { createStore } from 'redux';
-import { reducer } from './reducers/reducer'
+import rootReducer from './reducers/reducer';
 
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 
 
 const rootElement = document.getElementById('root');

@@ -1,5 +1,6 @@
-export function reducer() {
-    return {
+import { ADD_FEATURE } from "../actions/actions";
+
+const initialState = {
         additionalPrice: 0,
         car: {
             price: 26395,
@@ -15,4 +16,24 @@ export function reducer() {
             { id: 4, name: 'Rear spoiler', price: 250 }
         ]
     };
+
+function reducer(state = initialState, action) {
+    switch (action.type) {
+        case ADD_FEATURE:
+            let addedFeature = state.car.features;
+            addedFeature.push(action.payload)
+            return{
+                ...state
+            }
+        case REMOVE_FEATURE:
+            let removeFeature = state.car.features;
+            removeFeature.filter(obj => obj != action.payload)
+            return{
+                ...state
+            }
+        default:
+            return state;
+    }
 }
+
+export default reducer;
