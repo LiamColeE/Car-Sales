@@ -17,7 +17,7 @@ const App = (props) => {
     console.log("Remove feature");
     props.removeFeature(item)
   };
-
+  console.log(props.state);
   const buyItem = item => {
     // dipsatch an action here to add an item
     console.log("add feature");
@@ -28,7 +28,7 @@ const App = (props) => {
     <div className="boxes">
       <div className="box">
         <Header car={props.state.car} />
-        <AddedFeatures car={props.state.car} />
+        <AddedFeatures car={props.state.car} removeFeature={removeFeature}/>
       </div>
       <div className="box">
         <AdditionalFeatures store={props.state.store} addFeature={buyItem}/>
