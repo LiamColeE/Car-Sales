@@ -22,20 +22,24 @@ function reducer(state = initialState, action) {
         case ADD_FEATURE:
             let addedFeature = state.car.features;
             addedFeature.push(action.payload)
+            let additionalPrice = 0;
+            addedFeature.forEach((item) => {additionalPrice += item.price});
             return{
-                ...state
+                ...state,
+                additionalPrice
             }
         case REMOVE_FEATURE:
             let removeFeature = state.car.features;
             removeFeature = removeFeature.filter(obj => obj.id != action.payload.id)
             return{
                 ...state,
+                additionalPrice: state.additionalPrice - action.payload.price,
                 car:{
                     price: state.car.price,
                     name: state.car.name,
                     image: state.car.image,
                     features: removeFeature
-                }
+                },
             }
         default:
             return state;
