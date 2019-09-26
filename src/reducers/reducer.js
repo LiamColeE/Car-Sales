@@ -26,7 +26,13 @@ function reducer(state = initialState, action) {
             addedFeature.forEach((item) => {additionalPrice += item.price});
             return{
                 ...state,
-                additionalPrice
+                additionalPrice,
+                car:{
+                    price: state.car.price,
+                    name: state.car.name,
+                    image: state.car.image,
+                    features: addedFeature
+                }
             }
         case REMOVE_FEATURE:
             let removeFeature = state.car.features;
@@ -39,7 +45,7 @@ function reducer(state = initialState, action) {
                     name: state.car.name,
                     image: state.car.image,
                     features: removeFeature
-                },
+                }
             }
         default:
             return state;
